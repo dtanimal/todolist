@@ -1,15 +1,11 @@
 import { useState } from "react";
 
-export default function CreateTodo({ user, todos, dispatch }) {
-  // const timeElapsed = Date.now();
-  // const today = new Date(timeElapsed);
-
+export default function CreateTodo({ user, dispatch }) {
   const today = new Date();
   const dt = today.toDateString();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  // const [dateCreated] = useState(dt);
   const [dateCompleted] = useState(null);
 
   return (
