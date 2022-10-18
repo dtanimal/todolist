@@ -3,6 +3,8 @@ import TodoList from "./Todo/TodoList";
 import CreateTodo from "./Todo/CreateTodo";
 import { useReducer } from "react";
 import appReducer from "./Reducers";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 function App() {
   // const today = new Date();
@@ -16,6 +18,7 @@ function App() {
       isChecked: false,
       dateCreated: "01/25/2020",
       dateCompleted: null,
+      id: uuidv4(),
     },
 
     {
@@ -25,6 +28,7 @@ function App() {
       isChecked: false,
       dateCreated: "02/17/2019",
       dateCompleted: null,
+      id: uuidv4(),
     },
   ];
 

@@ -20,6 +20,7 @@ function todoReducer(state, action) {
         isChecked: action.isChecked,
         dateCreated: action.dateCreated,
         dateCompleted: action.dateCompleted,
+        id: action.id,
       };
       return [newTodos, ...state];
     default:
