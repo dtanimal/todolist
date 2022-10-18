@@ -6,7 +6,7 @@ import appReducer from "./Reducers";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import Header from "./Header";
-import { ThemeContext } from "./Context";
+import { ThemeContext, StateContext } from "./Context";
 import ChangeTheme from "./ChangeTheme";
 
 function App() {
@@ -54,19 +54,16 @@ function App() {
 
   return (
     <div>
-      <ThemeContext.Provider value={theme}>
-        <Header text="ToDo App" />
-        <ChangeTheme theme={theme} setTheme={setTheme} />
-        <UserBar user={state.user} dispatch={dispatch} />
-        <TodoList todos={state.todos} />
-        {state.user && (
-          <CreateTodo
-            user={state.user}
-            todos={state.todos}
-            dispatch={dispatch}
-          />
-        )}
-      </ThemeContext.Provider>
+      <StateContext.Provider value={{ state, dispatch }}>
+        <ThemeContext.Provider value={theme}>
+          <Header text="ToDo App" />
+          <ChangeTheme theme={theme} setTheme={setTheme} />
+
+          <UserBar />
+          <TodoList todos={state.todos} />
+          {state.user && <CreateTodo />}
+        </ThemeContext.Provider>
+      </StateContext.Provider>
     </div>
   );
 }
