@@ -23,6 +23,7 @@ function todoReducer(state, action) {
         id: action.id,
       };
       return [newTodos, ...state];
+    case "TOGGLE_TODO":
     default:
       return state;
   }

@@ -1,15 +1,15 @@
 import UserBar from "./User/UserBar";
 import TodoList from "./Todo/TodoList";
 import CreateTodo from "./Todo/CreateTodo";
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import appReducer from "./Reducers";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
+import Header from "./Header";
+import { ThemeContext } from "./Context";
+import ChangeTheme from "./ChangeTheme";
 
 function App() {
-  // const today = new Date();
-  // const dt = today.toDateString();
-  // const today = new Date(timeElapsed);
   const initialTodos = [
     {
       title: "Plants",
@@ -32,23 +32,41 @@ function App() {
     },
   ];
 
-  // const [user, setUser] = useState("");
-  // const [todos, setTodos] = useState(initialTodos);
-
-  // const [user, dispatchUser] = useReducer(userReducer, "");
-  // const [todos, dispatchTodos] = useReducer(todoReducer, initialTodos);
-
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
     todos: initialTodos,
   });
+
+  // const { user } = state; // destructuring user so you dont need to use state.user
+  //effect hook so update Title of page with User's name
+  useEffect(() => {
+    if (state.user) {
+      document.title = `${state.user}'s - ToDo App`;
+    } else {
+      document.title = `ToDo App`;
+    }
+  }, [state.user]);
+
+  const [theme, setTheme] = useState({
+    primaryColor: "deepskyblue",
+    secondaryColor: "coral",
+  });
+
   return (
     <div>
-      <UserBar user={state.user} dispatch={dispatch} />
-      <TodoList todos={state.todos} />
-      {state.user && (
-        <CreateTodo user={state.user} todos={state.todos} dispatch={dispatch} />
-      )}
+      <ThemeContext.Provider value={theme}>
+        <Header text="ToDo App" />
+        <ChangeTheme theme={theme} setTheme={setTheme} />
+        <UserBar user={state.user} dispatch={dispatch} />
+        <TodoList todos={state.todos} />
+        {state.user && (
+          <CreateTodo
+            user={state.user}
+            todos={state.todos}
+            dispatch={dispatch}
+          />
+        )}
+      </ThemeContext.Provider>
     </div>
   );
 }
