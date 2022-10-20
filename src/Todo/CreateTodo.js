@@ -9,7 +9,7 @@ export default function CreateTodo() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [dateCompleted] = useState(null);
+  // const [dateCompleted] = useState(null);
 
   // useContext hook to access state/dispatch
   const { user, dispatch } = useContext(StateContext);

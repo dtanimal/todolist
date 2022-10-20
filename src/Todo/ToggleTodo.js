@@ -1,10 +1,10 @@
-import React, { useState, useContext, useReducer } from "react";
+import React, { useContext } from "react";
 import { StateContext } from "../Context";
 
-export default function ToggleTodo({ id, dateCompleted, dateCreated }) {
+export default function ToggleTodo({ id, dateCompleted }) {
   const today = new Date();
   const dt = today.toDateString();
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const { dispatch } = useContext(StateContext);
 
   return (

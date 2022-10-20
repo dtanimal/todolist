@@ -30,6 +30,9 @@ function todoReducer(state, action) {
         return todo;
       });
       return toggleTodo;
+    case "DELETE_TODO":
+      return state.filter((todo) => todo.id !== action.id);
+
     default:
       return state;
   }
