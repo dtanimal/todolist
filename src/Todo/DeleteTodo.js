@@ -8,7 +8,7 @@ export default function DeleteTodo({ id }) {
     <div>
       <button
         type="button"
-        onClick={(e) => {
+        onClick={() => {
           dispatch({
             type: "DELETE_TODO",
             id: id,

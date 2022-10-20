@@ -3,38 +3,39 @@ import TodoList from "./Todo/TodoList";
 import CreateTodo from "./Todo/CreateTodo";
 import { useEffect, useReducer, useState } from "react";
 import appReducer from "./Reducers";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import Header from "./Header";
 import { ThemeContext, StateContext } from "./Context";
 import ChangeTheme from "./ChangeTheme";
 
 function App() {
-  const initialTodos = [
-    {
-      title: "Plants",
-      description: "Water the plants.",
-      author: "Danny",
-      isChecked: false,
-      dateCreated: "01/25/2020",
-      dateCompleted: null,
-      id: uuidv4(),
-    },
+  // const initialTodos = [
+  //   {
+  //     title: "Plants",
+  //     description: "Water the plants.",
+  //     author: "Danny",
+  //     isChecked: false,
+  //     dateCreated: "01/25/2020",
+  //     dateCompleted: null,
+  //     id: uuidv4(),
+  //   },
 
-    {
-      title: "Bedroom",
-      description: "Clean room.",
-      author: "Danny",
-      isChecked: false,
-      dateCreated: "02/17/2019",
-      dateCompleted: null,
-      id: uuidv4(),
-    },
-  ];
+  //   {
+  //     title: "Bedroom",
+  //     description: "Clean room.",
+  //     author: "Danny",
+  //     isChecked: false,
+  //     dateCreated: "02/17/2019",
+  //     dateCompleted: null,
+  //     id: uuidv4(),
+  //   },
+  // ];
 
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
-    todos: initialTodos,
+    todos: [], //set it to a empty array so page starts with no Todos
+    // todos: initialTodos,
   });
 
   // const { user } = state; // destructuring user so you dont need to use state.user
