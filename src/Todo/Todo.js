@@ -11,8 +11,8 @@ export default function Todo({
   dateCompleted,
   id,
 }) {
-  // const today = new Date();
-  // const dt = today.toDateString();
+  const today = new Date();
+  const dt = today.toDateString();
   // const [checked, setChecked] = useState(false);
 
   const { secondaryColor } = useContext(ThemeContext);
@@ -27,6 +27,7 @@ export default function Todo({
       <i>
         Written by: <b>{author}</b>
       </i>
+      <div>Date Created: {dateCreated}</div>
     </div>
   );
 }

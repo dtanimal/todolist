@@ -21,9 +21,6 @@ export default function ToggleTodo({ id, dateCompleted, dateCreated }) {
           });
         }}
       />
-      <div>
-        <div>Date Created: {dateCreated}</div>
-      </div>
     </div>
   );
 }
