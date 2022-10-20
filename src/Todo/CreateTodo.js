@@ -23,9 +23,8 @@ export default function CreateTodo() {
           title,
           description,
           author: user,
-          isChecked: false,
           dateCreated: dt,
-          dateCompleted,
+          dateCompleted: false,
           id: uuidv4(),
         });
       }}

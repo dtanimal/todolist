@@ -17,13 +17,19 @@ function todoReducer(state, action) {
         title: action.title,
         description: action.description,
         author: action.author,
-        isChecked: action.isChecked,
         dateCreated: action.dateCreated,
         dateCompleted: action.dateCompleted,
         id: action.id,
       };
       return [newTodos, ...state];
     case "TOGGLE_TODO":
+      const toggleTodo = state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, dateCompleted: !todo.dateCompleted };
+        }
+        return todo;
+      });
+      return toggleTodo;
     default:
       return state;
   }

@@ -1,18 +1,19 @@
 import { useState, useContext } from "react";
 import React from "react";
 import { ThemeContext } from "../Context";
+import ToggleTodo from "./ToggleTodo";
 
 export default function Todo({
   title,
   description,
   dateCreated,
   author,
-  isChecked,
   dateCompleted,
+  id,
 }) {
-  const today = new Date();
-  const dt = today.toDateString();
-  const [checked, setChecked] = useState(false);
+  // const today = new Date();
+  // const dt = today.toDateString();
+  // const [checked, setChecked] = useState(false);
 
   const { secondaryColor } = useContext(ThemeContext);
 
@@ -22,20 +23,7 @@ export default function Todo({
       <br />
       <div>{description}</div>
       <br />
-      <div>
-        Complete: {isChecked}
-        <input
-          name="checked"
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(!checked)}
-        />
-      </div>
-      <br />
-      <div>Date Completed: {checked === true ? dt : null}</div>
-      <br />
-      <div>Date Created: {dateCreated}</div>
-      <br />
+      <ToggleTodo id={id} dateCompleted={dateCompleted} />
       <i>
         Written by: <b>{author}</b>
       </i>
