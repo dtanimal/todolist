@@ -1,28 +1,20 @@
 {
   "todos": [
     {
-      "title": "portal",
-      "description": "test",
-      "dateCreated": "nov 5th",
-      "author": "paul",
-      "dateCompleted": "nov 5th",
-      "id": 1
+      "title": "sfdsfas",
+      "description": "dasdasdfsfsfsf",
+      "dateCreated": "Sat Nov 05 2022",
+      "author": "1234@email.com",
+      "dateCompleted": "Sat Nov 05 2022",
+      "id": 2
     },
     {
-      "title": "old post",
-      "description": "apples",
-      "dateCreated": "nov 6th",
-      "author": "danny",
-      "dateCompleted": "nov 6th",
+      "title": "bcvb",
+      "description": "cbcvbcvb",
+      "dateCreated": "Sat Nov 05 2022",
+      "author": "1234@email.com",
+      "dateCompleted": "Sat Nov 05 2022",
       "id": 3
-    },
-    {
-      "title": "New post",
-      "description": "apples",
-      "dateCreated": "nov 6th",
-      "author": "danny",
-      "dateCompleted": "nov 6th",
-      "id": 4
     }
   ],
   "users": [
@@ -30,6 +22,46 @@
       "email": "danny@mail.com",
       "password": "$2a$10$bAnmezQ5EWoL/hr2Ep06cOYxKdWp0yiM0MIZ8bg0hdzR72Cu3yMTe",
       "id": 1
+    },
+    {
+      "email": "test@mail.com",
+      "password": "$2a$10$KIsb50wivJVx3QAdQ/G32Oh8t.C4JMAJUrCiq.nb30XqjruCwFTM.",
+      "id": 2
+    },
+    {
+      "email": "test2@mail.com",
+      "password": "$2a$10$HMGbK5Yv.lu5LdVI7794xOEDJJUdEmIcw.7bhxGYP01Hs8.8aFYw2",
+      "id": 3
+    },
+    {
+      "email": "test@email.com",
+      "password": "$2a$10$72v4/PZumxPUQQokNHlt/O4e7xCVWSmpop07fyschapfanN2B0Zui",
+      "id": 4
+    },
+    {
+      "email": "tes2414t@mail.com",
+      "password": "$2a$10$.tlouasfLdPPsCOHhEMSHONa0df1XhcSBx21JswY234BBKRiMW12O",
+      "id": 5
+    },
+    {
+      "email": "dasdas@mail.com",
+      "password": "$2a$10$RkvfuA0H/P17B/Z.3KhBA.GoGVXIvyS.lDKNrLxc6AiGrwYFPAhbu",
+      "id": 6
+    },
+    {
+      "email": "dtdt123@email.com",
+      "password": "$2a$10$ddD3Iu6rrfC.9gKPlS6mqueWTeSad/T/FDSxSsgUgLnktsVNY9oPu",
+      "id": 7
+    },
+    {
+      "email": "danny2@mail.com",
+      "password": "$2a$10$iJlzpcBC9pn31KA/RgejJO8ZwOmTv2dodSvVPIwLT8PioFzmdqbfO",
+      "id": 8
+    },
+    {
+      "email": "1234@email.com",
+      "password": "$2a$10$nD4pW.SKEqnmZvsaph50VeBHct6ZzM7IyVcq8rwyIzQgZfQvKk/.e",
+      "id": 9
     }
   ],
   "themes": [
@@ -37,6 +69,16 @@
       "id": 1,
       "primaryColor": "deepskyblue",
       "secondaryColor": "coral"
+    },
+    {
+      "id": 2,
+      "primaryColor": "red",
+      "secondaryColor": "blue"
+    },
+    {
+      "id": 3,
+      "primaryColor": "green",
+      "secondaryColor": "yellow"
     }
   ]
 }

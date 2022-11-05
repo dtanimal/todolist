@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ThemeItem from "./ThemeItem";
 import { useResource } from "react-request-hook";
 

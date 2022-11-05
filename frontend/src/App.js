@@ -48,7 +48,7 @@ function App() {
 
   useEffect(() => {
     if (todos && todos.data) {
-      dispatch({ type: "FETCH_TODOS", todos: todos.data });
+      dispatch({ type: "FETCH_TODOS", todos: todos.data.reverse() });
     }
   }, [todos]);
 
