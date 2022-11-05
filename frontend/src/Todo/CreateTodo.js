@@ -12,9 +12,7 @@ export default function CreateTodo() {
   // const [dateCompleted] = useState(null);
 
   // useContext hook to access state/dispatch
-  // set state prop to state to access user state
-  const { state, dispatch } = useContext(StateContext);
-  const { user } = state;
+  const { user, dispatch } = useContext(StateContext);
 
   return (
     <form
