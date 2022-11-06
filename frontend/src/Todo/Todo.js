@@ -26,10 +26,14 @@ export default function Todo({
       <br />
       <ToggleTodo id={id} dateCompleted={dateCompleted} />
       <div>Date Created: {dateCreated}</div>
+      <br />
       <i>
         Written by: <b>{author}</b>
+        <br />
       </i>
+
       <DeleteTodo id={id} />
+      <br />
     </div>
   );
 }

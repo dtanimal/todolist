@@ -26,7 +26,10 @@ export default function ToggleTodo({ id, dateCompleted }) {
 
   return (
     <div>
-      Completed: {dateCompleted === true ? dt : "Not Completed"}
+      Completed:
+      <span style={{ color: "red" }}>
+        {dateCompleted === true ? dt : "Not Completed"}
+      </span>
       <input
         name="checked"
         type="checkbox"

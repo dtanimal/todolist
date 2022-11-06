@@ -22,7 +22,7 @@ export default function DeleteTodo({ id }) {
           });
         }}
       >
-        Delete Todo
+        Delete
       </button>
     </div>
   );
