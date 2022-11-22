@@ -8,6 +8,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const { dispatch } = useContext(StateContext);
+
   const [user, register] = useResource((username, password) => ({
     url: "/users",
     method: "post",

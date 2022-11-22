@@ -85,8 +85,9 @@ function App() {
         <ThemeContext.Provider value={theme}>
           <Header text="ToDo App" />
           <ChangeTheme theme={theme} setTheme={setTheme} />
-
-          <UserBar />
+          <React.Suspense fallback={"Loading..."}>
+            <UserBar />
+          </React.Suspense>
           <TodoList todos={state.todos} />
           {state.user && <CreateTodo />}
         </ThemeContext.Provider>
