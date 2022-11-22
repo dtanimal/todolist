@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uri = "connection-uri-here";
+const uri = "";
 
 function connect() {
   const options = { useNewUrlParser: true };
