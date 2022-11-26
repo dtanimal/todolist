@@ -1,10 +1,15 @@
+require("dotenv").config();
+
 var express = require("express");
+
 //Create express app
 var app = express();
+// establish a connection to the database
+require("./setupMongo")();
 
-// route definition
-app.get("/", function (req, res) {
-  res.send("Hello World");
-});
+app.use(express.json());
+
+app.use("/auth", require("./routes/auth"));
+app.use("/todo", require("./routes/todo"));
 
 module.exports = app;

@@ -1,14 +1,15 @@
-import UserBar from "./User/UserBar";
-import TodoList from "./Todo/TodoList";
+// import TodoList from "./Todo/TodoList";
 import CreateTodo from "./Todo/CreateTodo";
 import { useEffect, useReducer, useState } from "react";
 import appReducer from "./Reducers";
-// import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import Header from "./Header";
 import { ThemeContext, StateContext } from "./Context";
-import ChangeTheme from "./ChangeTheme";
-import { useResource } from "react-request-hook";
+// import { useResource } from "react-request-hook";
+import Layout from "./pages/Layout";
+import HomePage from "./pages/HomePage";
+import TodoPage from "./pages/TodoPage";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   // const initialTodos = [
@@ -20,18 +21,7 @@ function App() {
   //     dateCreated: "01/25/2020",
   //     dateCompleted: null,
   //     id: uuidv4(),
-  //   },
-
-  //   {
-  //     title: "Bedroom",
-  //     description: "Clean room.",
-  //     author: "Danny",
-  //     isChecked: false,
-  //     dateCreated: "02/17/2019",
-  //     dateCompleted: null,
-  //     id: uuidv4(),
-  //   },
-  // ];
+  //   }
 
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
@@ -39,24 +29,27 @@ function App() {
     // todos: initialTodos,
   });
 
-  const [todos, getTodos] = useResource(() => ({
-    url: "/todos",
-    method: "get",
-  }));
+  // const [todos, getTodos] = useResource(() => ({
+  //   url: "/todo",
+  //   method: "get",
+  //   headers: { Authorization: `${state.user.access_token}` },
+  // }));
 
-  useEffect(getTodos, []);
+  // useEffect(() => {
+  //   getTodos();
+  // }, [state?.user?.access_token]);
 
-  useEffect(() => {
-    if (todos && todos.data) {
-      dispatch({ type: "FETCH_TODOS", todos: todos.data.reverse() });
-    }
-  }, [todos]);
+  // useEffect(() => {
+  //   if (todos && todos.isLoading === false && todos.data) {
+  //     dispatch({ type: "FETCH_TODOS", todos: todos.data.todos.reverse() });
+  //   }
+  // }, [todos]);
 
   // const { user } = state; // destructuring user so you dont need to use state.user
   //effect hook so update Title of page with User's name
   useEffect(() => {
     if (state.user) {
-      document.title = `${state.user}'s - ToDo App`;
+      document.title = `${state.user.username}'s - ToDo App`;
     } else {
       document.title = `ToDo App`;
     }
@@ -83,13 +76,17 @@ function App() {
     <div>
       <StateContext.Provider value={{ state, dispatch }}>
         <ThemeContext.Provider value={theme}>
-          <Header text="ToDo App" />
-          <ChangeTheme theme={theme} setTheme={setTheme} />
-          <React.Suspense fallback={"Loading..."}>
-            <UserBar />
-          </React.Suspense>
-          <TodoList todos={state.todos} />
-          {state.user && <CreateTodo />}
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<HomePage />} />
+              </Route>
+              <Route path="/todo" element={<Layout />}>
+                <Route path="/todo/create" element={<CreateTodo />} />
+                <Route path="/todo/:id" element={<TodoPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
         </ThemeContext.Provider>
       </StateContext.Provider>
     </div>

@@ -1,25 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StateContext } from "../Context";
 import { useResource } from "react-request-hook";
 
-export default function DeleteTodo({ id }) {
-  const { dispatch } = useContext(StateContext);
-  const [todo, deleteTodo] = useResource(({ id }) => ({
-    url: "/todos/" + id,
+export default function DeleteTodo({ _id }) {
+  const { state, dispatch } = useContext(StateContext);
+
+  const [todo, deleteTodo] = useResource(({ _id }) => ({
+    // url: "/todo/" + id,
+    url: `/todo/${_id}`,
     method: "delete",
-    data: { id },
+    data: { _id },
+    headers: { Authorization: `${state.user.access_token}` },
   }));
+
+  useEffect(() => {
+    if (todo && todo.isLoading === false && todo.data) {
+      dispatch({ type: "DELETE_TODO", _id });
+    }
+  }, [todo]);
 
   return (
     <div>
       <button
-        type="button"
+        type="submit"
         onClick={() => {
-          deleteTodo({ id });
-          dispatch({
-            type: "DELETE_TODO",
-            id: id,
-          });
+          deleteTodo({ _id });
+          // dispatch({
+          //   type: "DELETE_TODO",
+          //   id: _id,
+          // });
         }}
       >
         Delete

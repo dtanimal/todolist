@@ -2,16 +2,18 @@ import React, { useContext, useEffect } from "react";
 import { StateContext } from "../Context";
 import { useResource } from "react-request-hook";
 
-export default function ToggleTodo({ id, dateCompleted }) {
+export default function ToggleTodo({ _id, dateCompleted }) {
   const today = new Date();
   const dt = today.toDateString();
   // const [checked, setChecked] = useState(false);
-  const { dispatch } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
 
-  const [todo, updateTodo] = useResource(({ id, dateCompleted }) => ({
-    url: "/todos/" + id,
+  const [todo, updateTodo] = useResource(({ _id, dateCompleted }) => ({
+    // url: "/todo/" + id,
+    url: `/todo/${_id}`,
     method: "patch",
-    data: { id, dateCompleted },
+    headers: { Authorization: `${state.user.access_token}` },
+    data: { _id, dateCompleted },
   }));
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function ToggleTodo({ id, dateCompleted }) {
       dispatch({
         type: "TOGGLE_TODO",
         dateCompleted: todo.data.dateCompleted,
-        id: todo.data.id,
+        id: todo.data._id,
       });
     }
   }, [todo]);
@@ -35,7 +37,7 @@ export default function ToggleTodo({ id, dateCompleted }) {
         type="checkbox"
         onChange={() => {
           updateTodo({
-            id: id,
+            id: _id,
             dateCompleted: dt,
           });
         }}

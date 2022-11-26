@@ -17,10 +17,11 @@ export default function CreateTodo() {
   const { user } = state;
 
   const [todo, createTodo] = useResource(
-    ({ title, description, dateCreated, author, dateCompleted, id }) => ({
-      url: "/todos",
+    ({ title, description, dateCreated, dateCompleted, id }) => ({
+      url: "/todo",
       method: "post",
-      data: { title, description, dateCreated, author, dateCompleted, id },
+      headers: { Authorization: `${state.user.access_token}` },
+      data: { title, description, dateCreated, dateCompleted, id },
     })
   );
 
@@ -30,13 +31,27 @@ export default function CreateTodo() {
         type: "CREATE_TODO",
         title: todo.data.title,
         description: todo.data.description,
-        author: todo.data.author,
+        author: user.username,
         dateCreated: todo.data.dateCreated,
         dateCompleted: todo.data.dateCompleted,
-        id: todo.data.id,
+        id: todo.data._id,
       });
     }
   }, [todo]);
+
+  // useEffect(() => {
+  //   if (todo.isLoading === false && todo.data) {
+  //     dispatch({
+  //       type: "CREATE_TODO",
+  //       title: todo.data.title,
+  //       description: todo.data.description,
+  //       author: todo.data.author,
+  //       dateCreated: todo.data.dateCreated,
+  //       dateCompleted: todo.data.dateCompleted,
+  //       id: todo.data.id,
+  //     });
+  //   }
+  // }, [todo]);
 
   return (
     <form
@@ -45,14 +60,14 @@ export default function CreateTodo() {
         createTodo({
           title,
           description,
-          author: user,
+          author: user.username,
           dateCreated: dt,
           dateCompleted: false,
         });
       }}
     >
       <div>
-        Author: <b>{user}</b>
+        Author: <b>{user.username}</b>
       </div>
       <div>
         <label htmlFor="create-title">Title:</label>

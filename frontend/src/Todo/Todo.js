@@ -3,8 +3,9 @@ import React from "react";
 import { ThemeContext } from "../Context";
 import ToggleTodo from "./ToggleTodo";
 import DeleteTodo from "./DeleteTodo";
+import { Link } from "react-router-dom";
 
-function Todo({ title, description, dateCreated, author, dateCompleted, id }) {
+function Todo({ title, description, dateCreated, author, dateCompleted, _id }) {
   // const today = new Date();
   // const dt = today.toDateString();
   // const [checked, setChecked] = useState(false);
@@ -12,11 +13,13 @@ function Todo({ title, description, dateCreated, author, dateCompleted, id }) {
   const { secondaryColor } = useContext(ThemeContext);
   return (
     <div>
-      <h3 style={{ color: secondaryColor }}>{title}</h3>
+      <Link to={`/todo/${_id}`}>
+        <h3 style={{ color: secondaryColor }}>{title}</h3>
+      </Link>
       <br />
       <div>{description}</div>
       <br />
-      <ToggleTodo id={id} dateCompleted={dateCompleted} />
+      <ToggleTodo _id={_id} dateCompleted={dateCompleted} />
       <div>Date Created: {dateCreated}</div>
       <br />
       <i>
@@ -24,7 +27,7 @@ function Todo({ title, description, dateCreated, author, dateCompleted, id }) {
         <br />
       </i>
 
-      <DeleteTodo id={id} />
+      <DeleteTodo _id={_id} />
       <br />
     </div>
   );
