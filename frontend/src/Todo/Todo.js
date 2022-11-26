@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import React from "react";
-import { ThemeContext } from "../Context";
+import { StateContext, ThemeContext } from "../Context";
 import ToggleTodo from "./ToggleTodo";
 import DeleteTodo from "./DeleteTodo";
 import { Link } from "react-router-dom";
@@ -9,6 +9,9 @@ function Todo({ title, description, dateCreated, author, dateCompleted, _id }) {
   // const today = new Date();
   // const dt = today.toDateString();
   // const [checked, setChecked] = useState(false);
+  const { state } = useContext(StateContext);
+  const { user } = state;
+  const username = user.username;
 
   const { secondaryColor } = useContext(ThemeContext);
   return (
@@ -23,7 +26,7 @@ function Todo({ title, description, dateCreated, author, dateCompleted, _id }) {
       <div>Date Created: {dateCreated}</div>
       <br />
       <i>
-        Written by: <b>{author}</b>
+        Written by: <b>{username}</b>
         <br />
       </i>
 

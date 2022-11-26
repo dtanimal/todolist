@@ -56,7 +56,7 @@ router.get("/:id", async function (req, res, next) {
   return res.status(200).json(todo);
 });
 
-router.delete("/:id", async function (req, res, next) {
+router.delete("/delete/:id", async function (req, res, next) {
   const deleteTodo = await Todo.deleteOne()
     .where("_id")
     .equals(req.params.id)
@@ -75,7 +75,7 @@ router.delete("/:id", async function (req, res, next) {
 //   return res.status(200).json(toggleTodo);
 // });
 
-router.patch("/:id", async function (req, res, next) {
+router.patch("/patch/:id", async function (req, res, next) {
   const toggleTodo = await Todo.findByIdAndUpdate()
     .where("_id")
     .equals(req.params._id)

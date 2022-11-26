@@ -7,7 +7,7 @@ export default function DeleteTodo({ _id }) {
 
   const [todo, deleteTodo] = useResource(({ _id }) => ({
     // url: "/todo/" + id,
-    url: `/todo/${_id}`,
+    url: `/todo/delete/${_id}`,
     method: "delete",
     data: { _id },
     headers: { Authorization: `${state.user.access_token}` },

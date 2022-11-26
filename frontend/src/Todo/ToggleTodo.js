@@ -10,7 +10,7 @@ export default function ToggleTodo({ _id, dateCompleted }) {
 
   const [todo, updateTodo] = useResource(({ _id, dateCompleted }) => ({
     // url: "/todo/" + id,
-    url: `/todo/${_id}`,
+    url: `/todo/patch/${_id}`,
     method: "patch",
     headers: { Authorization: `${state.user.access_token}` },
     data: { _id, dateCompleted },
