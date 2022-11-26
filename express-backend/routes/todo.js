@@ -75,15 +75,44 @@ router.delete("/delete/:id", async function (req, res, next) {
 //   return res.status(200).json(toggleTodo);
 // });
 
+// router.patch("/patch/:id", async function (req, res, next) {
+//   const toggleTodo = await Todo.findByIdAndUpdate()
+//     .where("_id")
+//     .equals(req.params._id)
+//     .exec();
+//   toggleTodo.dateCompleted = req.body.dateCompleted;
+//   toggleTodo.save();
+//   return res.status(200).json(toggleTodo);
+// });
+
+// router.patch("/patch/:id", async function (req, res, next) {
+//   const filter = { _id: req.params.id };
+//   const update = { dateCompleted: req.body.dateCompleted };
+
+//   const toggleTodo = await Todo.findOneAndUpdate(filter, update, { new: true });
+//   return res.status(200).json({ toggleTodo });
+// });
+
 router.patch("/patch/:id", async function (req, res, next) {
-  const toggleTodo = await Todo.findByIdAndUpdate()
-    .where("_id")
-    .equals(req.params._id)
-    .exec();
-  toggleTodo.dateCompleted = req.body.dateCompleted;
-  toggleTodo.save();
-  return res.status(200).json(toggleTodo);
+  const toggleTodo = await Todo.findByIdAndUpdate(req.params._id, {
+    dateCompleted: req.body.dateCompleted,
+  });
+  return res.status(200).json({ toggleTodo });
 });
+
+// router.patch("/patch/:id", async function (req, res, next) {
+//   const toggleTodo = await Todo.findByIdAndUpdate()
+//     .where("_id")
+//     .equals(req.params.id)
+//     .exec();
+//   toggleTodo.dateCompleted = req.body.dateCompleted;
+//   toggleTodo.save();
+//   if (toggleTodo) {
+//     return res.status(200).json(toggleTodo);
+//   } else {
+//     return res.status(404).json({ message: "Todo not found" });
+//   }
+// });
 
 // router.patch("/:id", async function (req, res, next) {
 //   const toggleTodo = await Todo.findOneAndUpdate()
